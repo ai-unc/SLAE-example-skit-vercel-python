@@ -1,0 +1,42 @@
+{
+	"name": "slae-example-skit-vercel-python",
+	"private": true,
+	"scripts": {
+		"dev": "concurrently -n=svelte,python -c='#ff3e00',blue \"vite dev\" \"pnpm fastapi-dev\"",
+		"fastapi-dev": ". .venv/bin/activate && python -m uvicorn python.api_app:app --reload",
+		"lint": "prettier --check .",
+		"format": "prettier --write .",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"test": "pnpm test:unit && pnpm test:integration",
+		"test:unit": "vitest",
+		"test:integration": "playwright test",
+		"build": "vite build",
+		"preview": "vite preview",
+		"preinstall": "npx only-allow pnpm"
+	},
+	"devDependencies": {
+		"@playwright/test": "^1.28.1",
+		"@sveltejs/adapter-vercel": "^5.1.1",
+		"@sveltejs/kit": "^2.0.0",
+		"@sveltejs/vite-plugin-svelte": "^3.0.0",
+		"autoprefixer": "^10.4.18",
+		"concurrently": "^8.2.2",
+		"lucide-svelte": "^0.358.0",
+		"postcss": "^8.4.35",
+		"postcss-import": "^16.0.1",
+		"prettier": "^3.1.1",
+		"prettier-plugin-svelte": "^3.1.2",
+		"prettier-plugin-tailwindcss": "^0.5.12",
+		"svelte": "^5.0.0-next.1",
+		"svelte-check": "^3.6.0",
+		"tailwindcss": "^3.4.1",
+		"tslib": "^2.4.1",
+		"typescript": "^5.0.0",
+		"vite": "^5.0.3",
+		"vitest": "^1.2.0"
+	},
+	"type": "module",
+	"engines": {
+		"node": ">=16 <19"
+	}
+}
